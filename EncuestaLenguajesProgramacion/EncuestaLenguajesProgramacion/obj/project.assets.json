@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rcarr\\Documents\\Visual Studio Projects\\EncuestaLenguajesProgramacion\\EncuestaLenguajesProgramacion\\EncuestaLenguajesProgramacion.csproj",
+      "projectUniqueName": "C:\\Users\\rcarr\\Documents\\projects\\encuestaLenguajesProgramacion\\EncuestaLenguajesProgramacion\\EncuestaLenguajesProgramacion\\EncuestaLenguajesProgramacion.csproj",
       "projectName": "EncuestaLenguajesProgramacion",
-      "projectPath": "C:\\Users\\rcarr\\Documents\\Visual Studio Projects\\EncuestaLenguajesProgramacion\\EncuestaLenguajesProgramacion\\EncuestaLenguajesProgramacion.csproj",
+      "projectPath": "C:\\Users\\rcarr\\Documents\\projects\\encuestaLenguajesProgramacion\\EncuestaLenguajesProgramacion\\EncuestaLenguajesProgramacion\\EncuestaLenguajesProgramacion.csproj",
       "packagesPath": "C:\\Users\\rcarr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rcarr\\Documents\\Visual Studio Projects\\EncuestaLenguajesProgramacion\\EncuestaLenguajesProgramacion\\obj\\",
+      "outputPath": "C:\\Users\\rcarr\\Documents\\projects\\encuestaLenguajesProgramacion\\EncuestaLenguajesProgramacion\\EncuestaLenguajesProgramacion\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rcarr\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -46,15 +46,10 @@ namespace EncuestaLenguajesProgramacion.Models
 
         public static void AgregarEntrada(int lenguajePrimario, int lenguajeSecundario)
         {
-            //var lp = ListaLenguajes.Find(l => l.Id == lenguajePrimario);
-            //var ls = ListaLenguajes.Find(l => l.Id == lenguajeSecundario);
-            //lp.Entradas += 1;
-            //ls.Entradas += 0.5;
-            //double sumatoria = ListaLenguajes.Sum(a => a.Entradas);
+            
             ListaLenguajes.Find(l => l.Id == lenguajePrimario).Entradas += 1;
             ListaLenguajes.Find(l => l.Id == lenguajeSecundario).Entradas += 0.5;
-            //lp.ClasificacionPorcentual += Convert.ToInt32((lp.Entradas / sumatoria) * 100); 
-            //ls.ClasificacionPorcentual += Convert.ToInt32((ls.Entradas / sumatoria) * 100); 
+           
             ActualizarLista();
 
         }
