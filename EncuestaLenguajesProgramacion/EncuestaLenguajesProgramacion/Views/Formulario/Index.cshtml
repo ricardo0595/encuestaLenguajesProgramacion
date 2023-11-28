@@ -1,0 +1,132 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-12">
+            <a href="@(Url.Content("~/Home/Index"))" class="btn btn-primary mt-4 mb-4">Regresar</a>
+
+
+            <form name="formularioEntradaUsuario" id="formularioEntradaUsuario">
+                <div class="form-group mt-3">
+                    <label for="exampleFormControlInput1">Nombre</label>
+                    <input required type="text" class="form-control" id="nombre" placeholder="">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="exampleFormControlInput1">Primer apellido</label>
+                    <input required type="text" class="form-control" id="apellido" placeholder="">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="exampleFormControlSelect1">Rol</label>
+                    <select required class="form-control" id="rol">
+                        <option value="" selected>Seleccione</option>
+                    </select>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="exampleFormControlSelect1">Pais</label>
+                    <select required class="form-control" id="pais">
+                        <option value="" selected>Seleccione</option>
+                    </select>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="exampleFormControlSelect1">Lenguaje de programacion Primario</label>
+                    <select required class="form-control" id="lenguaje1">
+                        <option value="" selected>Seleccione</option>
+                    </select>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="exampleFormControlSelect1">Lenguaje de programacion Secundario</label>
+                    <select required class="form-control" id="lenguaje2">
+                        <option value="" selected>Seleccione</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-4">Enviar</button>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        const countrySelect = document.getElementById("pais")
+        const programmingLanguages1 = document.getElementById("lenguaje1")
+        const programmingLanguages2 = document.getElementById("lenguaje2")
+        const itRoles = document.getElementById("rol")
+
+        Lists.ProgrammingLanguages = @(Html.Raw(Json.Serialize(ManejadorListaLenguajes.ListaLenguajes)))
+
+        for (const country of Lists.Countries) {
+
+            const op = document.createElement('option')
+            op.value = country.code
+            op.innerHTML = country.name
+            countrySelect.add(op)
+        }
+
+        for (const lenguaje of Lists.ProgrammingLanguages) {
+
+            let op = document.createElement('option')
+            op.value = lenguaje.id
+            op.innerHTML = lenguaje.nombre
+            let op2 = document.createElement('option')
+            op2.value = lenguaje.id
+            op2.innerHTML = lenguaje.nombre
+            programmingLanguages1.add(op);
+            programmingLanguages2.add(op2);
+        }
+
+        for (const rol of Lists.ItRoles) {
+
+            let op = document.createElement('option')
+            op.value = rol.id
+            op.innerHTML = rol.name
+          
+            itRoles.add(op);
+            
+        }
+
+        const formulario = document.getElementById("formularioEntradaUsuario");
+
+        formulario.onsubmit = function (e) {
+            e.preventDefault();
+
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify({
+                "Nombre": document.getElementById("nombre").value,
+                "Apellido": document.getElementById("apellido").value,
+                "Pais": document.getElementById("pais").value,
+                "Rol": document.getElementById("rol").value,
+                "LenguajePrimario": document.getElementById("lenguaje1").value,
+                "LenguajeSecundario": document.getElementById("lenguaje2").value,
+            });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                
+            };
+
+            fetch(baseUrl + "/Formulario/GuardarRespuesta", requestOptions)
+                .then(response => { 
+                    location.href= baseUrl + "/Home/Index"
+                })
+                .then(result => { 
+                    
+                })
+                .catch(error => console.log('error', error));
+
+        }
+    </script>
+}
+

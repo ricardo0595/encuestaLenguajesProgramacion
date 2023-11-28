@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    List<LenguajeProgramacion> listaLenguajes = (List<LenguajeProgramacion>) ViewData["listaLenguajes"];
+    listaLenguajes = listaLenguajes.OrderByDescending(l => l.ClasificacionPorcentual).ToList().GetRange(0,20);
+
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-12">
+            <a href="@(Url.Content("~/Formulario/Index"))" class="btn btn-primary mt-4 mb-4">Agregar</a>
+            <div class="table-responsive">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col"># Posicion</th>
+                            <th scope="col">Nombre Lenguaje</th>
+                            <th scope="col">Clasificacion</th>
+                            <th scope="col">Diferencia porcentual</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < listaLenguajes.Count; i++)
+                        {
+                            <tr>
+                                <th scope="row">@(i+1)</th>
+                                <td>@listaLenguajes[i].Nombre</td>
+                                <td>@listaLenguajes[i].ClasificacionPorcentual%</td>
+                                @if(i==0){
+                                    <td> + @(listaLenguajes[0].ClasificacionPorcentual - listaLenguajes[i+1].ClasificacionPorcentual)%</td>
+
+                                }
+                                else
+                                {
+                                    if (i != listaLenguajes.Count -1)
+                                    {
+                                        <td> + @(listaLenguajes[i].ClasificacionPorcentual - listaLenguajes[i + 1].ClasificacionPorcentual)%</td>
+
+                                    }
+
+                                }
+                            </tr>
+                        }
+                       
+                       
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
